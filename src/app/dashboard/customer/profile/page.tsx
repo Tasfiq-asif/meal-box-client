@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -9,8 +9,24 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Camera } from "lucide-react";
+import { axiosPublic } from "@/lib/axios";
+import useAuth from "@/hooks/useAuth";
 
 export default function CustomerProfilePage() {
+   const {  user } = useAuth();
+   const customerId = user?.id
+  //  console.log("user", customerId );
+  const [data, setData] = useState([]);
+   useEffect(() => {
+      axiosPublic.get(`/api/v1/profile/customer/:${customerId}`)
+        .then(res => {
+          setData(res.data);
+          console.log('this is data', res.data);
+        })
+        .catch(err => {
+          console.error("Error fetching data:", err);
+        });
+    }, []);
   const [profileData, setProfileData] = useState({
     name: "Emma Thompson",
     email: "emma@example.com",
@@ -38,7 +54,7 @@ export default function CustomerProfilePage() {
   };
 
   return (
-    <div className="container mx-auto max-w-2xl py-10">
+    <div className="container mx-auto max-w-2xl py-10 mt-5">
       <Card className="relative">
         {/* Profile Picture */}
         <div className="flex justify-center -mt-16">

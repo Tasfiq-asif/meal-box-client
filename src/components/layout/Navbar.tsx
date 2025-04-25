@@ -18,6 +18,7 @@ const navigation = [
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isAuthenticated, user, logout } = useAuth();
+  console.log("user", user , isAuthenticated);
 
   const handleLogout = async () => {
     await logout();

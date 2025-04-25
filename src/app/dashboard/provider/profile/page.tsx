@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -9,8 +9,25 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Camera } from "lucide-react";
+import useAuth from "@/hooks/useAuth";
+import { axiosPublic } from "@/lib/axios";
 
 export default function CustomerProfilePage() {
+
+     const {  user } = useAuth();
+     const userId = user?.id
+    //  console.log("user", customerId );
+    const [data, setData] = useState([]);
+     useEffect(() => {
+        axiosPublic.get(`/api/v1/providers/user/:${userId}`)
+          .then(res => {
+            setData(res.data);
+            console.log('this is data', res.data);
+          })
+          .catch(err => {
+            console.error("Error fetching data:", err);
+          });
+      }, []);
   const [profileData, setProfileData] = useState({
     name: "Emma Thompson",
     email: "emma@example.com",

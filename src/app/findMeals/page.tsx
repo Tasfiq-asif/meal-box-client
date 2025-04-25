@@ -1,7 +1,24 @@
+"use client";
 import Image from "next/image";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const findMeals = () => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/v1/meals")
+      .then(res => {
+        setData(res.data);
+        // console.log('this is data', res.data);
+      })
+      .catch(err => {
+        console.error("Error fetching data:", err);
+      });
+  }, []);
+
+   console.log(data)
     return (
         <div className="w-full ">
       {/* select option section */}

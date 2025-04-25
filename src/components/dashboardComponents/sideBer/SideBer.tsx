@@ -9,7 +9,7 @@ type Props = {
 };
 const SideBar = ({ Value }: Props) => {
   
-  const user = {"role":"provider"}
+  const user = {"role":"provider"};
   const comonNavigation = [
       { name: "Home", href: "/" },
   ];
