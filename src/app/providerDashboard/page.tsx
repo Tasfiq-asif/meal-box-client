@@ -270,6 +270,14 @@ const AddMealsPage = () => {
     "high-protein",
     "keto",
     "paleo",
+    "mediterranean",
+    "pescatarian",
+    "italian",
+    "thai",
+    "Egg-Free",
+    "Halal",
+    "Balanced Diet",
+    "Weight Loss Focused"
   ];
 
   return (
