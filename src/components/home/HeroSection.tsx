@@ -32,7 +32,7 @@ export default function HeroSection() {
               </p>
               <div className="mt-10 flex items-center gap-x-6">
                 <Button size="lg" asChild>
-                  <Link href="/meal-plans">Browse Meal Plans</Link>
+                  <Link href="/findMeals">Browse Meal Plans</Link>
                 </Button>
                 <Link
                   href="/how-it-works"
