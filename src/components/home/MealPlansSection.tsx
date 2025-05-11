@@ -17,7 +17,7 @@ export default function MealPlansSection() {
       period: "per week",
       description: "High-fat, low-carb meals designed to keep you in ketosis.",
       image:
-        "https://images.unsplash.com/photo-1558005530-a7958896ec60?q=80&w=2942&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1580959375944-abd7e991f971?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
       meals: "5 meals",
       features: ["Free delivery", "Fresh ingredients", "Nutritionist approved"],
     },
@@ -28,7 +28,7 @@ export default function MealPlansSection() {
       description:
         "Well-rounded meals with balanced macros for everyday nutrition.",
       image:
-        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2960&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1760&auto=format&fit=crop",
       meals: "5 meals",
       features: ["Free delivery", "Chef curated", "Seasonal ingredients"],
       featured: true,
@@ -70,6 +70,7 @@ export default function MealPlansSection() {
                   src={plan.image}
                   alt={plan.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
                 />
                 {plan.featured && (
